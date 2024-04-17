@@ -1,4 +1,4 @@
-export const data = {
+module.exports = {
   products: [
     {
       _id: "1",
