@@ -1,11 +1,11 @@
-module.exports = {
+export default {
   products: [
     {
       _id: "1",
       name: "Full Zip Running Shirts",
       category: "Shirts",
       image: "./images/product-1.jpg",
-      price: 66,
+      price: 59,
       brand: "Giordano",
       rating: 4.5,
       numReviews: 10,

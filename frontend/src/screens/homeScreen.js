@@ -1,5 +1,6 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable import/prefer-default-export */
 import axios from "axios";
-
 // import { data } from "../data.js";
 export const HomeScreen = {
   render: async () => {
@@ -11,7 +12,7 @@ export const HomeScreen = {
       },
     });
     if (!response || response.statusText !== "OK") {
-      return `<div>Error in getting data </div>`;
+      return "<div>Error in getting data </div>";
     }
     const products = response.data;
     return `
@@ -32,8 +33,7 @@ export const HomeScreen = {
                 <div class="product-brand">${product.brand}</div>
                 <div class="product-price">$${product.price}</div>
               </div>
-      </li>
-    `
+      </li>`
       )
       .join("\n")}
       </ul>
