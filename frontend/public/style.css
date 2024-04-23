@@ -1,91 +1,100 @@
 * {
-  box-sizing: border-box;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
 }
 html {
-  font-size: 62.5%;
-  /* 16px * 62.5 =10px = 1rem */
+    font-size: 62.5%;
+    /* 16px * 62.5 =10px = 1rem */
 }
 body {
-  height: 100vh;
-  margin: 0;
-  font: 1.6rem Helvetica, Arial;
+    height: 100vh;
+    margin: 0;
+    font: 1.6rem Helvetica, Arial;
 }
 a {
-  color: #000;
+    color: #000;
 }
 a:hover {
-  color: #f08040;
+    color: #f08040;
 }
 .grid-container {
-  display: grid;
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
-  grid-template-columns: 1fr;
-  grid-template-rows: 5rem 1fr 5rem;
-  height: 100%;
+    display: grid;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
+    grid-template-columns: 1fr;
+    grid-template-rows: 5rem 1fr 5rem;
+    height: 100%;
 }
 header {
-  grid-area: header;
-  background-color: #203040;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
+    grid-area: header;
+    background-color: #203040;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
 }
 header a {
-  color: #fff;
-  font-weight: bold;
-  text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
 }
 header a:hover {
-  color: #f08040;
+    color: #f08040;
 }
 .brand a {
-  font-size: 3rem;
+    font-size: 3rem;
 }
 .products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .products li {
-  flex: 0 1 30rem;
-  margin: 1rem;
-  margin-bottom: 0;
-  height: 42rem;
-  border-top: 0.2rem #e0e0e0 solid;
+    flex: 0 1 30rem;
+    margin: 1rem;
+    margin-bottom: 0;
+    height: 42rem;
+    border-top: 0.2rem #e0e0e0 solid;
 }
 .product {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
 }
 .product img {
-  max-width: 22rem;
-  max-height: 26rem;
-  margin-top: 2rem;
+    max-width: 22rem;
+    max-height: 26rem;
+    margin-top: 2rem;
 }
 .product-name {
-  line-height: 2.2rem;
+    line-height: 2.2rem;
 }
 .product-brand {
-  color: #808080;
-  font-size: 1.2rem;
+    color: #808080;
+    font-size: 1.2rem;
 }
 .prodcut-price {
-  font-size: 2rem;
+    font-size: 2rem;
 }
 footer {
-  background: #203040;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background: #203040;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Rating  */
+.rating {
+    color: #ffc000;
+    font-size: 1.8rem;
+}
+.rating:last-child {
+    color: #444444;
+    font-size: 1.4rem;
 }
