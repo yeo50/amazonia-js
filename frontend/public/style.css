@@ -20,6 +20,28 @@ a {
 a:hover {
     color: #f08040;
 }
+button {
+    font: 1.6rem helvetica;
+    padding: 1rem;
+    border: 0.1rem #808080 solid;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+button:hover {
+    border: 0.1rem #404040 solid;
+}
+button.primary {
+    background: #f0c040;
+}
+button.fw {
+    width: 100%;
+}
+.success {
+    color: #40c040;
+}
+.error {
+    color: #c04040;
+}
 .grid-container {
     display: grid;
     grid-template-areas:
@@ -94,7 +116,91 @@ footer {
     color: #ffc000;
     font-size: 1.8rem;
 }
-.rating:last-child {
+.rating span:last-child {
     color: #444444;
     font-size: 1.4rem;
+}
+.content {
+    padding: 1rem;
+}
+/* product details  */
+.details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.details-image {
+    flex: 2 1 60rem;
+}
+.details-image img {
+    max-width: 60rem;
+    width: 100%;
+}
+.details-info,
+.details-action {
+    flex: 1 1 30rem;
+}
+.details-info h1 {
+    font-size: 2rem;
+}
+.details-info li,
+.details-action li {
+    margin-bottom: 1rem;
+}
+.details-action {
+    padding: 1rem;
+    border: 0.1rem solid #808080;
+    border-radius: 0.5rem;
+    background: #f8f8f8;
+}
+/* Cart  */
+.cart {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.cart .cart-list {
+    flex: 3 1 60rem;
+}
+.cart .cart-action {
+    flex: 1 1 20rem;
+    background: #f0f0f0;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+.cart-list-container {
+    padding: 1rem;
+}
+.cart-list-container li {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 0.1rem #c0c0c0 solid;
+}
+.cart-list-container img {
+    max-width: 10rem;
+    max-height: 10rem;
+}
+.cart-list-container li:first-child {
+    align-items: flex-end;
+}
+.cart-image {
+    flex: 1 1;
+}
+.cart-name {
+    flex: 8 1;
+}
+.cart-price {
+    flex: 1 1;
+    text-align: right;
+}
+.cart-name > div {
+    padding: 1rem;
+}
+.cart-list button,
+.cart-list select {
+    font-size: 1.3rem;
+    padding: 0.5rem;
 }

@@ -30,7 +30,7 @@ const HomeScreen = {
                  
                 </a>
                 <div class="product-name">
-                  <a href="#/product/1"> ${product.name} </a>
+                  <a href="#/product/${product._id}"> ${product.name} </a>
                 </div>
                 <div class="product-rating">
                    ${Rating.render({
