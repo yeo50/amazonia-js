@@ -1,32 +1,33 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-underscore-dangle */
 
-import axios from 'axios'
-import Rating from '../components/Rating'
-// import { data } from "../data.js";
+import axios from 'axios';
+import Rating from '../components/Rating';
+import { hideLoading, showLoading } from '../utils';
 
 const HomeScreen = {
     render: async () => {
-        // const { products } = data;
+        showLoading();
         const response = await axios({
             url: 'http://localhost:5000/api/products',
             headers: {
                 'Content-Type': 'application/json',
             },
-        })
+        });
         if (!response || response.statusText !== 'OK') {
-            return '<div>Error in getting data </div>'
+            return '<div>Error in getting data </div>';
         }
-        const products = response.data
+        hideLoading();
+        const products = response.data;
         return `
-    
-    <ul class="products">
+       <ul class="products">
     ${products
-        .map(
-            (product) => `
+        .map((product) => {
+            return `
       <li>
            <div class="product">
                 <a href="#/product/${product._id}">
-                  <img src=".${product.image}" alt="${product.name}" />
+                  <img src="${product.image}" alt="${product.name}" />
                  
                 </a>
                 <div class="product-name">
@@ -41,11 +42,10 @@ const HomeScreen = {
                 <div class="product-brand">${product.brand}</div>
                 <div class="product-price">$${product.price}</div>
               </div>
-      </li>`
-        )
+      </li>`;
+        })
         .join('\n')}
-      </ul>
-    `
+      </ul>`;
     },
-}
-export default HomeScreen
+};
+export default HomeScreen;

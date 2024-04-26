@@ -1,15 +1,22 @@
-import { signin } from '../api';
-import { getUserInfo, setUserInfo } from '../localStorage';
+import { update } from '../api';
+import { getUserInfo, setUserInfo, clearUser } from '../localStorage';
 import { hideLoading, showLoading, showMessage } from '../utils';
 
-const SigninScreen = {
+const ProfileScreen = {
     after_render: () => {
         document
-            .getElementById('signin-form')
+            .getElementById('signout-button')
+            .addEventListener('click', () => {
+                clearUser();
+                document.location.hash = '/';
+            });
+        document
+            .getElementById('profile-form')
             .addEventListener('submit', async (e) => {
                 e.preventDefault();
                 showLoading();
-                const data = await signin({
+                const data = await update({
+                    name: document.getElementById('name').value,
                     email: document.getElementById('email').value,
                     password: document.getElementById('password').value,
                 });
@@ -24,36 +31,38 @@ const SigninScreen = {
             });
     },
     render: () => {
-        if (getUserInfo().name) {
+        const { name, email } = getUserInfo();
+        if (!name) {
             document.location.hash = '/';
         }
         return `
         <div class="form-container">
-           <form id="signin-form">
+           <form id="profile-form">
              <ul class="form-items">
                 <li>
-                   <h1> Sign In </h1>
+                   <h1> User Profile </h1>
+                </li>
+                <li>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" value="${name}"/>
                 </li>
                 <li>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email"/>
+                    <input type="email" id="email" name="email" value="${email}"/>
                 </li>
                 <li>
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password"/>
                 </li>
                 <li>
-                    <button type="submit" class="primary"> Sign In </button>
+                    <button type="submit" class="primary"> Update</button>
                 </li>
-                <li>
-                    <div>
-                        New User ?
-                        <a href="#/register" >Create Your Account</a>
-                    </div>
+                   <li>
+                    <button type="button" id="signout-button" > Sign Out</button>
                 </li>
              </ul>
            </form>
         </div>`;
     },
 };
-export default SigninScreen;
+export default ProfileScreen;
