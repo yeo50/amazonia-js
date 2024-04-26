@@ -1,3 +1,5 @@
+import { getCartItems } from './localStorage';
+
 /* eslint-disable linebreak-style */
 export const parseRequestUrl = () => {
     const url = document.location.hash.toLowerCase();
@@ -41,4 +43,11 @@ export const showMessage = (error, callback) => {
 };
 export const hideMessage = () => {
     document.getElementById('message-overlay').classList.remove('overlay');
+};
+export const redirectUser = () => {
+    if (getCartItems().length !== 0) {
+        document.location.hash = '/shipping';
+    } else {
+        document.location.hash = '/';
+    }
 };
