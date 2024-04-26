@@ -11,7 +11,7 @@ module.exports = {
     },
     rules: {
         // Other rules...
-        'linebreak-style': ['error', 'windows'],
+        // 'linebreak-style': ['error', 'windows'],
         'no-nested-ternary': 0,
         // quotes: 0,
         'no-console': 0,
