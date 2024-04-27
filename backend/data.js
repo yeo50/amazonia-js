@@ -1,7 +1,7 @@
 export default {
     products: [
         {
-            _id: '1',
+            _id: '111111111111111111111111',
             name: 'Full Zip Running Shirts',
             category: 'Shirts',
             image: './images/product-1.jpg',
@@ -12,7 +12,7 @@ export default {
             countInStock: 6,
         },
         {
-            _id: '2',
+            _id: '222222222222222222222222',
             name: 'Nike Full-Zip Hoodie Men Workout  Sweatshirt',
             category: 'Shirts',
             image: './images/product-2.jpg',
@@ -67,4 +67,4 @@ export default {
             countInStock: 6,
         },
     ],
-}
+};
