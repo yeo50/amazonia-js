@@ -41,6 +41,7 @@ const PlaceOrderScreen = {
             .getElementById('placeorder-button')
             .addEventListener('click', async () => {
                 const order = covertCartToOrder();
+
                 showLoading();
                 const data = await createOrder(order);
                 hideLoading();
@@ -48,7 +49,7 @@ const PlaceOrderScreen = {
                     showMessage(data.error);
                 } else {
                     cleanCart();
-                    document.location.hash = `/order/${data.order._id}`;
+                    document.location.hash = `/orders/${data.order._id}`;
                 }
             });
     },
