@@ -8,10 +8,7 @@ import userRouter from './routers/userRouter';
 import orderRouter from './routers/orderRouter';
 
 mongoose
-    .connect(config.MONGODB_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
+    .connect(config.MONGODB_URL)
     .then(() => {
         console.log('connected to mongodb database here');
     })
