@@ -151,7 +151,7 @@ const OrderScreen = {
            <div class="order-action">
                <ul> 
                   <li>
-                     <h2> Order Summery
+                     <h2> Order Summary
                      </h2>
                   </li>
                     <li>
@@ -183,7 +183,13 @@ const OrderScreen = {
                        $${totalPrice}
                      </div>
                   </li>
-                  <li><button class="fw primary" id="paypal-button"></button></li>
+                  <li>
+                  ${
+                      isPaid
+                          ? ''
+                          : `<button class="fw primary"  id="paypal-button"></button>`
+                  }
+                  </li>
               
 
                </ul>
