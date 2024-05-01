@@ -1,20 +1,21 @@
-import { getProduct } from '../api'
-import Rating from '../components/Rating'
-import { parseRequestUrl } from '../utils'
+import { getProduct } from '../api';
+import Rating from '../components/Rating';
+import { parseRequestUrl } from '../utils';
 
 const ProductScreen = {
     after_render: () => {
-        const request = parseRequestUrl()
+        const request = parseRequestUrl();
         document.getElementById('add-button').addEventListener('click', () => {
-            document.location.hash = `/cart/${request.id}`
-        })
+            document.location.hash = `/cart/${request.id}`;
+        });
     },
     render: async () => {
-        const request = parseRequestUrl()
-        const product = await getProduct(request.id)
+        const request = parseRequestUrl();
+        const product = await getProduct(request.id);
         if (product.error) {
-            return `<div>${product.error}</div>`
+            return `<div>${product.error}</div>`;
         }
+
         return `
         <div class="content">
           <div class="back-to-result">
@@ -63,7 +64,7 @@ const ProductScreen = {
                </ul>
             </div>
           </div>
-        </div>`
+        </div>`;
     },
-}
-export default ProductScreen
+};
+export default ProductScreen;

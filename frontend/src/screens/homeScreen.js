@@ -3,22 +3,27 @@
 
 import axios from 'axios';
 import Rating from '../components/Rating';
-import { hideLoading, showLoading } from '../utils';
+import { hideLoading, parseRequestUrl, showLoading } from '../utils';
+import { getProducts } from '../api';
 
 const HomeScreen = {
     render: async () => {
         showLoading();
-        const response = await axios({
-            url: 'http://localhost:5000/api/products',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        if (!response || response.statusText !== 'OK') {
-            return '<div>Error in getting data </div>';
-        }
+        // const response = await axios({
+        //     url: 'http://localhost:5000/api/products?',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        // });
+        const { value } = parseRequestUrl();
+        const products = await getProducts({ searchKeyword: value });
+
+        // if (!response || response.statusText !== 'OK') {
+        //     return '<div>Error in getting data </div>';
+        // }
+
         hideLoading();
-        const products = response.data;
+
         return `
        <ul class="products">
     ${products
