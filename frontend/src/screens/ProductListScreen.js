@@ -1,5 +1,8 @@
-import { createProduct, getProducts } from '../api';
+/* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
+import { createProduct, deleteProduct, getProducts } from '../api';
 import DashboardMenu from '../components/DashboardMenu';
+import { hideLoading, rerender, showLoading, showMessage } from '../utils';
 
 /* eslint-disable arrow-body-style */
 const ProductListScreen = {
@@ -13,6 +16,27 @@ const ProductListScreen = {
                 }
                 document.location.hash = `/product/${data.product._id}/edit`;
             });
+        const editButtons = document.getElementsByClassName('edit-button');
+        Array.from(editButtons).forEach((editButton) => {
+            editButton.addEventListener('click', () => {
+                document.location.hash = `/product/${editButton.id}/edit`;
+            });
+        });
+        const deleteButtons = document.getElementsByClassName('delete-button');
+        Array.from(deleteButtons).forEach((deleteButton) => {
+            deleteButton.addEventListener('click', async () => {
+                if (confirm('are you sure ')) {
+                    showLoading();
+                    const data = await deleteProduct(deleteButton.id);
+                    if (data.error) {
+                        showMessage(data.error);
+                    } else {
+                        rerender(ProductListScreen);
+                    }
+                    hideLoading();
+                }
+            });
+        });
     },
     render: async () => {
         const products = await getProducts({});
