@@ -1,9 +1,19 @@
-import { getProducts } from "../api";
-import DashboardMenu from "../components/DashboardMenu";
+import { createProduct, getProducts } from '../api';
+import DashboardMenu from '../components/DashboardMenu';
 
 /* eslint-disable arrow-body-style */
 const ProductListScreen = {
-    after_render: () => {},
+    after_render: () => {
+        document
+            .getElementById('create-product-button')
+            .addEventListener('click', async () => {
+                const data = await createProduct();
+                if (!data) {
+                    return `<div> data not present</div>`;
+                }
+                document.location.hash = `/product/${data.product._id}/edit`;
+            });
+    },
     render: async () => {
         const products = await getProducts({});
         return `

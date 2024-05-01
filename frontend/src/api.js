@@ -4,7 +4,7 @@ import { getUserInfo } from './localStorage';
 
 export const getProducts = async ({ searchKeyword = '' }) => {
     try {
-        let queryString = '?';
+        let queryString = '/?';
         if (searchKeyword) {
             queryString += `searchKeyword=${searchKeyword}&`;
         }
@@ -20,11 +20,27 @@ export const getProducts = async ({ searchKeyword = '' }) => {
         return { error: err.response.data.message || err.message };
     }
 };
+export const createProduct = async () => {
+    try {
+        const { token } = getUserInfo();
+        const response = await axios({
+            url: `${apiUrl}/api/products`,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    } catch (err) {
+        return { error: err.response.data.message || err.message };
+    }
+};
 export const getProduct = async (id) => {
     try {
         const response = await axios({
             url: `${apiUrl}/api/products/${id}`,
-
+            method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         });
         // if (response.statusText !== 'OK') {
