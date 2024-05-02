@@ -6,6 +6,7 @@ import {
     rerender,
 } from '../utils';
 import { getOrder, getPaypalClientId, payOrder } from '../api';
+import { getUserInfo } from '../localStorage';
 
 const addPaypalSdk = async (totalPrice) => {
     const clientId = await getPaypalClientId();
@@ -70,6 +71,7 @@ const handlePayment = (clientId, totalPrice) => {
 const OrderScreen = {
     after_render: () => {},
     render: async () => {
+        const { isAdmin } = getUserInfo();
         const request = parseRequestUrl();
 
         const {
@@ -190,9 +192,14 @@ const OrderScreen = {
                           : `<button class="fw primary"  id="paypal-button"></button>`
                   }
                   </li>
-              
-
-               </ul>
+                  <li>
+                  ${
+                      isPaid && !isDelivered && isAdmin
+                          ? `<button id="deliver-order-button" class="primary fw">Deliver Now</button>`
+                          : ''
+                  }
+                  </li>
+                 </ul>
            </div>
         </div>
      </div>`;

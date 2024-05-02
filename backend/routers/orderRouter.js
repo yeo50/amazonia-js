@@ -1,10 +1,19 @@
 /* eslint-disable no-underscore-dangle */
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
-import { isAuth } from '../utils';
+import { isAdmin, isAuth } from '../utils';
 import Order from '../models/orderModel';
 
 const orderRouter = express.Router();
+orderRouter.get(
+    '/',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const orders = await Order.find({}).populate('user');
+        res.send(orders);
+    })
+);
 orderRouter.get(
     '/mine',
     isAuth,
