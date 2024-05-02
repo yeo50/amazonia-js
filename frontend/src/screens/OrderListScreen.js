@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-alert */
-import { getOrders } from '../api';
+import { deleteOrder, getOrders } from '../api';
 import DashboardMenu from '../components/DashboardMenu';
 import { hideLoading, rerender, showLoading, showMessage } from '../utils';
 

@@ -5,7 +5,7 @@ import {
     parseRequestUrl,
     rerender,
 } from '../utils';
-import { getOrder, getPaypalClientId, payOrder } from '../api';
+import { deliverOrder, getOrder, getPaypalClientId, payOrder } from '../api';
 import { getUserInfo } from '../localStorage';
 
 const addPaypalSdk = async (totalPrice) => {
@@ -69,7 +69,21 @@ const handlePayment = (clientId, totalPrice) => {
     });
 };
 const OrderScreen = {
-    after_render: () => {},
+    after_render: async () => {
+        const request = parseRequestUrl();
+        if (document.getElementById('deliver-order-button')) {
+            document
+                .getElementById('deliver-order-button')
+                .addEventListener('click', async () => {
+                    const response = await deliverOrder(request.id);
+                    if (response) {
+                        rerender(OrderScreen);
+                    } else {
+                        showMessage('Oop Somethings wrong');
+                    }
+                });
+        }
+    },
     render: async () => {
         const { isAdmin } = getUserInfo();
         const request = parseRequestUrl();

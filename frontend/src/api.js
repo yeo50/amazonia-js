@@ -306,3 +306,46 @@ export const payOrder = async (orderId, paymentResult) => {
         };
     }
 };
+export const deliverOrder = async (id) => {
+    const { token } = getUserInfo();
+    const response = await axios({
+        url: `${apiUrl}/api/orders/${id}/deliver`,
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    return response.data;
+};
+// export const deleteOrder = async (id) => {
+//     const { token } = getUserInfo();
+//     const response = await axios({
+//         url: `${apiUrl}/api/orders/${id}`,
+//         method: 'DELETE',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             Authorization: `Bearer ${token}`,
+//         },
+//     });
+//     return response.data;
+// };
+export const deleteOrder = async (orderId) => {
+    try {
+        const { token } = getUserInfo();
+        const response = await axios({
+            url: `${apiUrl}/api/orders/${orderId}`,
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        // if (response.statusText !== 'OK') {
+        //   throw new Error(response.data.message);
+        // }
+        return response.data;
+    } catch (err) {
+        return { error: err.response.data.message || err.message };
+    }
+};
