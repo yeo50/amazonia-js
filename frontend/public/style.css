@@ -383,3 +383,59 @@ td {
     padding: 1rem;
     color: #f08040;
 }
+/* dashboard summary  */
+.summary-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+.summary-items li {
+    width: 30rem;
+    height: 10rem;
+    border: 0.4rem solid #f0f0f0;
+}
+.summary-title {
+    font-size: 2rem;
+    color: #111;
+    padding: 1rem;
+}
+.color1 {
+    background: #efdee3;
+}
+.summary-body {
+    text-align: center;
+    padding: 1rem;
+}
+.color2 {
+    background: #e3dff4;
+}
+.color3 {
+    background: #e4f1e5;
+}
+.charts {
+    display: flex;
+    flex-wrap: wrap;
+}
+.charts > div {
+    flex: 1;
+    margin: 1rem;
+    padding: 1rem;
+}
+.charts div h2 {
+    margin-bottom: 1rem;
+}
+#chart {
+    padding: 1rem;
+    fill: #40c040;
+}
+#chart-pie {
+    padding: 1rem;
+    fill: rgba(240, 128, 128);
+    font-size: 2rem;
+    stroke: #40c040;
+    stroke-width: 0.1rem;
+}
+.ct-label {
+    color: red;
+}
